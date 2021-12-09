@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_drawer)
+
         bagde = navView.getOrCreateBadge(R.id.navigation_favourite)
         actionBarBinding = ActionBarBinding.inflate(LayoutInflater.from(applicationContext))
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
@@ -62,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         updateBagdeIcon()
         navView.setupWithNavController(navController)
         setEventClick()
-
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
             currentScreen = destination.id
             when(currentScreen){
-                R.id.navigation_movie -> {
+                R.id.navigation_home -> {
                     actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
                     actionBarBinding.headerTitle.text = "Movies"
                 }
@@ -82,27 +82,25 @@ class MainActivity : AppCompatActivity() {
                     actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
                     actionBarBinding.headerTitle.text = "Favourite"
                 }
-                R.id.navigation_about -> {
-                    actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
-                    actionBarBinding.headerTitle.text = "About"
-                }
                 R.id.navigation_setting -> {
                     actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
                     actionBarBinding.headerTitle.text = "Setting"
                 }
-
+                R.id.navigation_about -> {
+                    actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
+                    actionBarBinding.headerTitle.text = "About"
+                }
                 R.id.details_movies -> {
                     actionBarBinding.headerTitle.text = "Details Movies"
                 }
                 else -> actionBarBinding.frameChangeLayout.visibility = View.GONE
 
             }
-
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: ChangeBadgeNumber?) {
+    fun onMessageEvent(event: ChangeBadgeNumber?) { /* Do something */
         dataBagdeNumber += event!!.number
         lifecycleScope.launch {
             val data = AppDatabase.getDataBase(this@MainActivity).resultDao().getAll()

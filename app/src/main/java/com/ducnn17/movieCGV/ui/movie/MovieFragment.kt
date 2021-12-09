@@ -88,7 +88,7 @@ class MovieFragment : Fragment() {
 
     private fun initRecyclerView(){
         movieAdapter = MovieAdapter(context = requireContext(),lifecycle = lifecycleScope,
-            ItemClickListener = object : ItemClickListener {
+            IonItemClick = object : ItemClickListener {
                 override fun onClick(id: Int) {
                     findNavController().navigate(R.id.details_movies, Bundle().apply {
                         putInt("idMovies",id )

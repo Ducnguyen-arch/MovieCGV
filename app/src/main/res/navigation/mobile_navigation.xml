@@ -27,4 +27,15 @@
         android:name="com.ducnn17.movieCGV.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.ducnn17.movieCGV.SettingFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="com.ducnn17.movieCGV.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+
 </navigation>

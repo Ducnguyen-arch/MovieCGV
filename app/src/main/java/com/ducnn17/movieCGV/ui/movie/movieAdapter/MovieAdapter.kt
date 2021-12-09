@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.ducnn17.movieCGV.R
-import com.ducnn17.movieCGV.data.movies.entity.Result
 import com.ducnn17.movieCGV.data.movies.dao.AppDatabase
+import com.ducnn17.movieCGV.data.movies.entity.Result
 import com.ducnn17.movieCGV.utils.core.AppInfo
 import com.ducnn17.movieCGV.utils.ui.ChangeBadgeNumber
 import com.ducnn17.movieCGV.utils.ui.ItemClickListener
@@ -27,7 +27,7 @@ class MovieAdapter(
     val context: Context,
     var type: Int? = null,
     val lifecycle: LifecycleCoroutineScope,
-    val ItemClickListener: ItemClickListener
+    val IonItemClick: ItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     enum class ViewType(val type: Int) {
         TYPE_ONE(0),
@@ -45,8 +45,15 @@ class MovieAdapter(
 
     }
 
+
     fun addList(list: MutableList<Result?>) {
         this.list?.addAll(list)
+        notifyDataSetChanged()
+
+    }
+
+    fun clearList() {
+        this.list = arrayListOf()
         notifyDataSetChanged()
     }
 
@@ -79,6 +86,7 @@ class MovieAdapter(
                 is ViewHolder2 -> this.onBind(list?.get(position)!!)
             }
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -86,7 +94,6 @@ class MovieAdapter(
             return 0
         }
         return list!!.size
-
     }
 
     inner class ViewHolder(
@@ -102,22 +109,23 @@ class MovieAdapter(
 
         init {
             itemview.setOnClickListener {
-                ItemClickListener.onClick(list!![layoutPosition]!!.id)
+                IonItemClick.onClick(list!![layoutPosition]!!.id)
             }
-
             star.setOnClickListener {
                 lifecycle.launch {
                     val data =  AppDatabase.getDataBase(context).resultDao().checkid(list!![layoutPosition]!!.id)
                     if(data != null){
                         star.setImageResource(R.drawable.ic_baseline_star_border_24)
-                            AppDatabase.getDataBase(context).resultDao().delete(list!![layoutPosition]!!)
-                        EventBus.getDefault().post( ChangeBadgeNumber(-1)) //gui event di
+                        AppDatabase.getDataBase(context).resultDao().delete(list!![layoutPosition]!!)
+                        EventBus.getDefault().post( ChangeBadgeNumber(-1))
                     }else{
                         star.setImageResource(R.drawable.ic_baseline_star_24)
                         AppDatabase.getDataBase(context).resultDao().insertAll(list!![layoutPosition]!!)
-                        EventBus.getDefault().post( ChangeBadgeNumber(1)) //gui event di
+                        EventBus.getDefault().post( ChangeBadgeNumber(1))
                     }
                 }
+
+
 
             }
         }
@@ -133,12 +141,14 @@ class MovieAdapter(
 
             lifecycle.launch {
                 val data =  AppDatabase.getDataBase(context).resultDao().checkid(item.id)
-                star.setImageResource(R.drawable.ic_baseline_star_24)
+                if(data != null){
+                    star.setImageResource(R.drawable.ic_baseline_star_24)
+                }
             }
 
 
             val imageUrl = GlideUrl(
-                AppInfo.apiImage + item.backdrop_path, LazyHeaders.Builder()
+                AppInfo.apiImage + item?.backdrop_path, LazyHeaders.Builder()
                     .addHeader("api_key", "e7631ffcb8e766993e5ec0c1f4245f93")
                     .build()
             )
@@ -159,7 +169,7 @@ class MovieAdapter(
     ) : RecyclerView.ViewHolder(itemview) {
         init {
             itemview.setOnClickListener {
-                ItemClickListener.onClick(list!![layoutPosition]!!.id)
+                IonItemClick.onClick(list!![layoutPosition]!!.id)
             }
         }
         val title = itemView.findViewById<TextView>(R.id.name)
@@ -168,8 +178,6 @@ class MovieAdapter(
         @SuppressLint("SetTextI18n")
         fun onBind(item: Result) {
             title.text = item.title
-
-
             val imageUrl = GlideUrl(
                 AppInfo.apiImage + item?.backdrop_path, LazyHeaders.Builder()
                     .addHeader("api_key", "e7631ffcb8e766993e5ec0c1f4245f93")
