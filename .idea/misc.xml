@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock2_DucNN17/Fresher2021_AndroidMock2_DucNN17/app/src/main/res/layout/action_bar.xml" value="0.1546875" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock2_DucNN17/Fresher2021_AndroidMock2_DucNN17/app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock2_DucNN17/Fresher2021_AndroidMock2_DucNN17/app/src/main/res/layout/cell_grid_list_movies.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock2_DucNN17/Fresher2021_AndroidMock2_DucNN17/app/src/main/res/layout/cell_list_cast.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.23692307692307693" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/layout/action_bar.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/layout/cell_list_movies.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/layout/nav_header.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/layout/notification_bage.xml" value="0.33" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Advance/Fresher2021_AndroidMock_DucNN17/Fresher2021_AndroidMock_DucNN17/app/src/main/res/menu/drawer_view.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/action_bar.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/cell_list_movies.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/fragment_favourite.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/fragment_home.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/layout/fragment_notifications.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject(2)/MoviesProject/app/src/main/res/menu/drawer_view.xml" value="0.22447916666666667" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/circle_gray.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/circle_red.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/circle_white.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_about.xml" value="0.14114583333333333" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_baseline_face_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_favourite.xml" value="0.14114583333333333" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_movies.xml" value="0.14114583333333333" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/ic_setting.xml" value="0.14114583333333333" />
+        <entry key="..\:/MoviesProject/app/src/main/res/drawable/shape_circle_red.xml" value="0.2169230769230769" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/action_bar.xml" value="0.33" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/cell_grid_list_movies.xml" value="0.18333333333333332" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/cell_list_cast.xml" value="0.20416666666666666" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/cell_list_movies.xml" value="0.25" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/detail_movies_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/fragment_detail_movies.xml" value="0.2895125553914328" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/fragment_home.xml" value="0.125" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/nav_header.xml" value="0.22" />
+        <entry key="..\:/MoviesProject/app/src/main/res/layout/notification_bage.xml" value="0.5" />
+        <entry key="..\:/MoviesProject/app/src/main/res/menu/bottom_nav_menu.xml" value="0.125" />
+        <entry key="..\:/MoviesProject/app/src/main/res/menu/drawer_view.xml" value="0.5571428571428572" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
