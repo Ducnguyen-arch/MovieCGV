@@ -1,59 +1,87 @@
 package com.ducnn17.movieCGV
 
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.preference.*
+import com.ducnn17.movieCGV.receiver.Constant
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener,
+Preference.OnPreferenceChangeListener{
+    private var mCategoryPreference    : ListPreference? = null
+    private var mRatePreference        : SeekBarPreference? = null
+    private var mReleaseYearPreference : EditTextPreference? = null
+    private var mSortPreference        : ListPreference? = null
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SettingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onResume(){
+        super.onResume()
+        preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onStop(){
+        preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        super.onStop()
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_setting)
+        mCategoryPreference = findPreference(Constant.PREFERENCE_CATEGORY_KEY)
+        mRatePreference = findPreference(Constant.PREFERENCE_RATE_KEY)
+        mReleaseYearPreference = findPreference(Constant.PREFERENCE_RELEASE_YEAR_KEY)
+        mSortPreference = findPreference(Constant.PREFERENCE_SORT_KEY)
+
+        val mSharePreference : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+        mCategoryPreference!!.summary = mSharePreference.getString(Constant.PREFERENCE_CATEGORY_KEY,"Popular Movie")
+        mRatePreference!!.summary = mSharePreference.getInt(Constant.PREFERENCE_RATE_KEY,0).toString()
+        mReleaseYearPreference!!.summary = mSharePreference.getString(Constant.PREFERENCE_RELEASE_YEAR_KEY,"None")
+        mSortPreference!!.summary = mSharePreference.getString(Constant.PREFERENCE_SORT_KEY,"None")
+
+        mCategoryPreference!!.onPreferenceChangeListener = this
+        mRatePreference!!.onPreferenceChangeListener = this
+        mReleaseYearPreference!!.onPreferenceChangeListener = this
+        mSortPreference!!.onPreferenceChangeListener = this
+
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key == Constant.PREFERENCE_CATEGORY_KEY){
+            if (sharedPreferences != null) {
+                mCategoryPreference!!.summary = sharedPreferences.getString(Constant.PREFERENCE_CATEGORY_KEY,"Popular Movie")
+            }
+        }else if (key == Constant.PREFERENCE_RATE_KEY){
+            if (sharedPreferences != null) {
+                mRatePreference!!.summary = sharedPreferences.getInt(Constant.PREFERENCE_RATE_KEY,0).toString()
+            }
+        }else if (key == Constant.PREFERENCE_RELEASE_YEAR_KEY){
+            if (sharedPreferences != null) {
+                mReleaseYearPreference!!.summary = sharedPreferences.getString(Constant.PREFERENCE_RELEASE_YEAR_KEY,"None")
+            }
+        }else if (key == Constant.PREFERENCE_SORT_KEY){
+            if (sharedPreferences != null) {
+                mSortPreference!!.summary = sharedPreferences.getString(Constant.PREFERENCE_SORT_KEY,"None")
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+    override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
+       when(preference?.key){
+           Constant.PREFERENCE_CATEGORY_KEY ->{
+               mCategoryPreference?.summary = mCategoryPreference?.value
+               return true
+           }
+           Constant.PREFERENCE_RATE_KEY ->{
+               mRatePreference?.summary = mRatePreference?.value.toString()
+               return true
+           }
+           Constant.PREFERENCE_RELEASE_YEAR_KEY ->{
+               mReleaseYearPreference?.summary = mReleaseYearPreference?.text
+               return true
+           }
+           Constant.PREFERENCE_SORT_KEY ->{
+               mSortPreference?.summary = mSortPreference?.value
+               return true
+           }
+       }
+        return true
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SettingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SettingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

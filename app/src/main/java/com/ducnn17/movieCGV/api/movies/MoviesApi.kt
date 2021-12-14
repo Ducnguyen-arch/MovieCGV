@@ -17,4 +17,6 @@ interface MoviesApi {
 
     @GET("movie/{id}/credits?api_key=e7631ffcb8e766993e5ec0c1f4245f93")
     fun getCastCrewList(@Path("id") id: Int): Call<DetailsMovies>
+
+
 }

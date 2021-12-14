@@ -80,7 +80,7 @@ dependencies {
     //EventBus
     implementation("org.greenrobot:eventbus:3.3.0")
 
-
-    //
+    //preference screen
+    implementation "androidx.preference:preference-ktx:1.1.1"
 
 }
