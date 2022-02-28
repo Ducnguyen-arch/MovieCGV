@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
                     actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
                     actionBarBinding.headerTitle.text = "Favourite"
                 }
+
                 R.id.navigation_setting -> {
                     actionBarBinding.frameChangeLayout.visibility = View.VISIBLE
                     actionBarBinding.headerTitle.text = "Setting"
@@ -100,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: ChangeBadgeNumber?) { /* Do something */
+    fun onMessageEvent(event: ChangeBadgeNumber?) {
         dataBagdeNumber += event!!.number
         lifecycleScope.launch {
             val data = AppDatabase.getDataBase(this@MainActivity).resultDao().getAll()
@@ -111,7 +112,6 @@ class MainActivity : AppCompatActivity() {
                 bagde.isVisible = false
                 bagde.number = dataBagdeNumber
             }
-
         }
     }
 
@@ -167,7 +167,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                                 return true
                             }
-
                         }
                         return true
                     }

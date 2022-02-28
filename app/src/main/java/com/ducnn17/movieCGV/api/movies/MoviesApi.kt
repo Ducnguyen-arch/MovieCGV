@@ -18,5 +18,10 @@ interface MoviesApi {
     @GET("movie/{id}/credits?api_key=e7631ffcb8e766993e5ec0c1f4245f93")
     fun getCastCrewList(@Path("id") id: Int): Call<DetailsMovies>
 
+    @GET("3/movie/top_rated?api_key=e7631ffcb8e766993e5ec0c1f4245f93")
+    fun getMovieListTopRate(@Query("api_key") apiKey: String  , @Query("page") pageNumber: String)
+
+    @GET("3/movie/upcoming?api_key=e7631ffcb8e766993e5ec0c1f4245f93")
+    fun getMovieListUpcoming(@Query("api_key") apiKey: String  , @Query("page") pageNumber: String)
 
 }

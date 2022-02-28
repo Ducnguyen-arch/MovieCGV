@@ -14,11 +14,11 @@ Preference.OnPreferenceChangeListener{
 
     override fun onResume(){
         super.onResume()
-        preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferenceManager.sharedPreferences!!.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onStop(){
-        preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferenceManager.sharedPreferences!!.unregisterOnSharedPreferenceChangeListener(this)
         super.onStop()
     }
 
@@ -29,7 +29,8 @@ Preference.OnPreferenceChangeListener{
         mReleaseYearPreference = findPreference(Constant.PREFERENCE_RELEASE_YEAR_KEY)
         mSortPreference = findPreference(Constant.PREFERENCE_SORT_KEY)
 
-        val mSharePreference : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+        val mSharePreference : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(
+            activity!!)
         mCategoryPreference!!.summary = mSharePreference.getString(Constant.PREFERENCE_CATEGORY_KEY,"Popular Movie")
         mRatePreference!!.summary = mSharePreference.getInt(Constant.PREFERENCE_RATE_KEY,0).toString()
         mReleaseYearPreference!!.summary = mSharePreference.getString(Constant.PREFERENCE_RELEASE_YEAR_KEY,"None")
@@ -62,7 +63,7 @@ Preference.OnPreferenceChangeListener{
         }
     }
 
-    override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
+    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
        when(preference?.key){
            Constant.PREFERENCE_CATEGORY_KEY ->{
                mCategoryPreference?.summary = mCategoryPreference?.value
